@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>ajax</h2>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>AJAX</title>
+    <style>
+        .tableData {
+            border-left: solid 1px #D8C3C3;
+            border-top: solid 1px #D8C3C3;
+        }
+
+        .tableData tr {
+
+        } 
+
+        .tableData td, tableData th {
+            border-right: solid 1px #D8C3C3;
+            border-bottom: solid 1px #D8C3C3;
+            text-align: left;
+            padding: 5px;
+        }
+
+        .tableData td {
+
+        }
+
+        .tableData th {
+            background-color: #FAFAFA;
+            padding: 7px 5px;
+            border-bottom-color: #9C9C9C;
+        }
+
+    </style>
+    <script src="https://code.jquery.com/jquery-1.7.1.js" integrity="sha256-n8wkEJNAWUaIUDnfQoz6fwBRofK9vMWjE6F3qeNfiAY=" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div>
+        <table id="tbldata" class="tableData">
+            <tr>
+                <th>Matricula</th>
+                <th>Nombre</th>
+                <th>Carrera</th>
+            </tr>
+        </table>
+    </div>
+    <script>
+        $(function () {
+            $.get("getData", {}, function (data) {
+                var row;
+                $.each(data, function (i, v1) {
+                    row += "<tr><td>" + v1.Matricula + "</td><td>" + v1.Nombre + "</td><td>" + v1.Carrera + "</td></tr>"
+                });
+                $("#tbldata").append(row);
+            })
+        })
+    </script>
+</body>
+</html>
